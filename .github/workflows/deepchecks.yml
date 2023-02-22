@@ -1,0 +1,35 @@
+name: 
+
+on: [push]
+
+jobs:
+  poetry-install:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Configure python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install poetry
+        uses: knowsuchagency/poetry-install@v1
+
+      - name: Init poetry
+        run: |
+          poetry install
+          poetry shell
+
+      - name: Run training
+        run: |
+          python run_training.py
+      #     python run_deepchecks.py
+
+      # - name: Upload deepcheck report
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: report
+      #     path: deepchecks.html
