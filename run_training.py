@@ -8,7 +8,7 @@ from deepchecks.tabular.datasets.classification import iris
 from deepchecks.tabular.suites import full_suite
 from deepchecks.tabular import Dataset
 
-def train_report()
+def train_report():
     # Load Data
     iris_df = iris.load_data(data_format='Dataframe', as_train_test=False)
     label_col = 'target'
