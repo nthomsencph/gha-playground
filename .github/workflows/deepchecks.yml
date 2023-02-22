@@ -12,15 +12,15 @@ jobs:
     steps:
 
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Configure python
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v4
         with:
           python-version: '3.9'
 
       - name: Install poetry
-        uses: knowsuchagency/poetry-install@v2
+        uses: knowsuchagency/poetry-install@v3
 
       - name: Run training
         run: |
