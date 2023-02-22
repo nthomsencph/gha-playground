@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       REPORT_NAME: ${{ secrets.REPORT_NAME }}
+      BV_MODEL_BLOB_URL: ${{ secrets.BV_MODEL_BLOB_URL }}
+      BV_AZ_STORAGE_KEY: ${{ secrets.BV_AZ_STORAGE_KEY }}
     steps:
 
       - name: Checkout repo
@@ -23,6 +25,10 @@ jobs:
       - name: Run training
         run: |
           poetry run python run_training.py
+        # with:
+        #   path: |
+        #     ${{ secrets.BLOB_URL }}
+        #     ${{ secrets.STORAGE_ACCESS_KEY }}
 
       - name: Upload deepcheck report
         uses: actions/upload-artifact@v3
