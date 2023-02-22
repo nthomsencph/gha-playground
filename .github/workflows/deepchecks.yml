@@ -18,17 +18,12 @@ jobs:
       - name: Install poetry
         uses: knowsuchagency/poetry-install@v1
 
-      - name: Init poetry
-        run: |
-          poetry install
-
       - name: Run training
         run: |
           poetry run python run_training.py
-      #     python run_deepchecks.py
 
-      # - name: Upload deepcheck report
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: report
-      #     path: deepchecks.html
+      - name: Upload deepcheck report
+        uses: actions/upload-artifact@v3
+        with:
+          name: Upload report
+          path: report.html
