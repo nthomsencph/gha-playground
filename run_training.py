@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
+from decouple import config
 
 from deepchecks.tabular.datasets.classification import iris
 from deepchecks.tabular.suites import full_suite
@@ -26,7 +27,7 @@ def train_report():
 
     suite = full_suite()
     suite_result = suite.run(train_dataset=ds_train, test_dataset=ds_test, model=rf_clf)
-    suite_result.save_as_html('report.html')
+    suite_result.save_as_html(config("REPORT_NAME"))
 
 if __name__ == "__main__":
     report = train_report()

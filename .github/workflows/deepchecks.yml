@@ -1,10 +1,12 @@
-name: 
+name: Retraining flow
 
 on: [push]
 
 jobs:
-  poetry-install:
+  retraining:
     runs-on: ubuntu-latest
+    env:
+      REPORT_NAME: ${{ secrets.REPORT_NAME }}
     steps:
 
       - name: Checkout repo
@@ -16,7 +18,7 @@ jobs:
           python-version: '3.9'
 
       - name: Install poetry
-        uses: knowsuchagency/poetry-install@v1
+        uses: knowsuchagency/poetry-install@v2
 
       - name: Run training
         run: |
@@ -26,4 +28,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Upload report
-          path: report.html
+          path: ${{ secrets.REPORT_NAME }}
