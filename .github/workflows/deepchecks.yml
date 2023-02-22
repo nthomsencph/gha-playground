@@ -12,7 +12,7 @@ jobs:
     steps:
 
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Configure python
         uses: actions/setup-python@v4
@@ -20,7 +20,7 @@ jobs:
           python-version: '3.9'
 
       - name: Install poetry
-        uses: knowsuchagency/poetry-install@v3
+        uses: knowsuchagency/poetry-install@v2
 
       - name: Run training
         run: |
