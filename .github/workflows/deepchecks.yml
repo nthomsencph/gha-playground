@@ -21,11 +21,10 @@ jobs:
       - name: Init poetry
         run: |
           poetry install
-          poetry shell
 
       - name: Run training
         run: |
-          python run_training.py
+          poetry run python run_training.py
       #     python run_deepchecks.py
 
       # - name: Upload deepcheck report
